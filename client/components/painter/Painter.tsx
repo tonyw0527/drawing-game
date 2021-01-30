@@ -265,7 +265,10 @@ const Painter = () => {
       router.push("/");
     } else {
     }
-    const socket = io("http://localhost:3001");
+    const socket =
+      process.env.VERCEL_ENV === "production"
+        ? io("/")
+        : io("http://localhost:3001");
 
     socket.on("connect", () => {
       console.log("socket connected - ", socket.id);

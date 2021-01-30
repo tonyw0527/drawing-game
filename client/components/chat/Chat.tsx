@@ -213,7 +213,10 @@ const Chat = ({ MyName }) => {
   };
 
   useEffect(() => {
-    const socket = io("http://localhost:3001");
+    const socket =
+      process.env.VERCEL_ENV === "production"
+        ? io("/")
+        : io("http://localhost:3001");
     socket.emit("chat connected", MyName);
     socketRef.current = socket;
 
