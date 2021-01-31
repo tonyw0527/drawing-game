@@ -266,10 +266,10 @@ const Painter = () => {
     } else {
     }
     const socket =
-      process.env.VERCEL_ENV === "production"
+      process.env.NEXT_PUBLIC_NODE_ENV === "production"
         ? io("/")
         : io("http://localhost:3001");
-
+    console.log(process.env.NEXT_PUBLIC_NODE_ENV);
     socket.on("connect", () => {
       console.log("socket connected - ", socket.id);
     });

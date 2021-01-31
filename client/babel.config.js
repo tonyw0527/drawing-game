@@ -3,7 +3,7 @@ const plugins = [
   ['styled-components', { 'ssr': true }],
 ]
 
-if(process.env['VERCEL_ENV'] === 'production') {
+if(process.env['NEXT_PUBLIC_NODE_ENV'] === 'production') {
   plugins.push(['transform-remove-console'])
 }
 

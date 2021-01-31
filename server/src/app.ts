@@ -122,7 +122,7 @@ io.on("connection", (socket: any) => {
   });
 
   socket.on("game-chat-login", () => {
-
+    // 로그인에 있는 msg chatting 관련 코드들을 이쪽으로 이전해야함.
   });
 
   // game logic
