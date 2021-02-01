@@ -262,10 +262,6 @@ const Painter = () => {
 
   // socket init
   useEffect(() => {
-    if (!isAuth) {
-      router.push("/");
-    } else {
-    }
     const socket =
       process.env.NEXT_PUBLIC_NODE_ENV === "production"
         ? io("/")
@@ -526,6 +522,10 @@ const Painter = () => {
       socketRef.current.off("reset canvas");
     };
   }, [Eraser_flag, IsMyTurn, PenColor]);
+
+  if (!isAuth) {
+    router.push("/");
+  }
 
   return (
     <Container>

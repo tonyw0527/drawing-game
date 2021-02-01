@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ko_pack } from "../../utils/localization/lang_packs";
 import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
+import Popup from "../basics/Popup";
 import styled from "styled-components";
 
 const { HOME_TITLE_H1, HOME_TITLE_H2, HOME_NICKNAME_INFO } = ko_pack;
@@ -115,8 +116,9 @@ const Home = observer(() => {
   const { userStore } = useStore();
   const { isAuth } = userStore;
 
-  const [NickName, setNickName] = useState("");
-  const [Code, setCode] = useState("");
+  const [NickName, setNickName] = useState<string>("");
+  const [Code, setCode] = useState<string>("");
+  const [isPopUp, setIsPopUp] = useState<boolean>(false);
 
   const nameInputRef = useRef<HTMLInputElement>();
   const formRef = useRef<HTMLFormElement>();
@@ -136,8 +138,19 @@ const Home = observer(() => {
     }
   }, [isAuth]);
 
+  const onClose = () => {
+    setIsPopUp(false);
+  };
+
   return (
     <Container>
+      <Popup
+        visible={isPopUp}
+        title={"인증 오류"}
+        msg={"초대코드를 다시 입력해주세요."}
+        close={"확인"}
+        onClose={onClose}
+      />
       <Wrapper>
         <div>
           <H1>{HOME_TITLE_H1}</H1>
@@ -156,8 +169,15 @@ const Home = observer(() => {
 
             userStore.setNickname(NickName);
             userStore.setInvicode(Code);
-            userStore.requestAuth();
-
+            userStore.requestAuth().then((res) => {
+              if (res) {
+                console.log("인증 완료");
+                setIsPopUp(false);
+              } else {
+                console.log("초대코드 틀림");
+                setIsPopUp(true);
+              }
+            });
             console.log("try socket connecting");
 
             // userStore.connectSocket();

@@ -1,6 +1,5 @@
 import Axios from 'axios';
 import Cookies from 'js-cookie';
-import io from "socket.io-client";
 import { makeAutoObservable, autorun, runInAction } from 'mobx';
 
 export default class UserStore {
@@ -13,7 +12,7 @@ export default class UserStore {
   
     this.nickname = "";
     this.invicode = "";
-    this.isAuth = false;
+    this.isAuth = null;
 
     autorun(() => {
       console.log('set nickname - ', this.nickname);
@@ -33,7 +32,7 @@ export default class UserStore {
   setInvicode(invicode: string) {
     this.invicode = invicode;
     Cookies.set("invicode", invicode, { expires: 30 });
-  }  
+  }
 
   async requestAuth() {
     try {
@@ -43,10 +42,12 @@ export default class UserStore {
       runInAction(() => {
         this.isAuth = result.data.success;
       });
+      return true;
     } catch (error) {
       runInAction(() => {
         this.isAuth = error.response.data.success;
       });
+      return false;
     }
   }
 }
