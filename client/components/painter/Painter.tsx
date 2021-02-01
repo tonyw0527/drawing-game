@@ -17,13 +17,6 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const TitleBox = styled.div`
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 100%;
-  text-align: center;
-`;
-
 const DrawingBox = styled.div`
   position: relative;
 `;
@@ -181,16 +174,9 @@ const BookingBtn = styled.button`
   font-size: 0.8rem;
 `;
 
-const {
-  PAINTER_TITLE_TURN,
-  PAINTER_TITLE_GUESS,
-  PAINTER_BOOKING_BUTTON,
-  PAINTER_PROMPT_MSG,
-  ANS_INPUT_PLACEHOLDER,
-} = ko_pack;
+const { PAINTER_BOOKING_BUTTON, ANS_INPUT_PLACEHOLDER } = ko_pack;
 
 const workMemory = new WorkMemory();
-const Time = "";
 
 const Painter = () => {
   // canvas
@@ -529,13 +515,6 @@ const Painter = () => {
 
   return (
     <Container>
-      <TitleBox>
-        <h2>
-          {IsMyTurn
-            ? `${MyName}, ${PAINTER_TITLE_TURN} ${Time}`
-            : `${MyName}, ${PAINTER_TITLE_GUESS} ${Time}`}
-        </h2>
-      </TitleBox>
       <DrawingBox>
         <canvas ref={myCanvasRef} id="myCanvas" width="350" height="350">
           Error

@@ -5,7 +5,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton";
 const Container = styled.div`
   display: flex;
   justify-content: start;
-  padding: 0.5rem 1.1rem;
+  padding: 0.5rem 1.1rem 0.8rem;
   width: 100%;
 `;
 
