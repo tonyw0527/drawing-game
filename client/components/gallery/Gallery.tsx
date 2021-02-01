@@ -60,7 +60,7 @@ const DescBtn = styled.button`
   width: 40px;
   border: none;
   background-color: transparent;
-  color: white;
+  color: inherit;
   font-size: 1.2rem;
   cursor: pointer;
 
@@ -71,9 +71,9 @@ const DescBtn = styled.button`
 const DescIcon = styled.i`
   width: 100%;
   height: 40%;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
   color: transparent;
-  background-image: url("./icons/likes_icon.svg");
+  background-image: url("./icons/heart.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
