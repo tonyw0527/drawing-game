@@ -221,6 +221,7 @@ const Painter = () => {
   useEffect(() => {
     const myCanvas = myCanvasRef.current;
     const myCtx = myCanvas.getContext("2d");
+
     myCtx.fillStyle = "white";
     myCtx.fillRect(0, 0, myCanvasRef.current.width, myCanvasRef.current.height);
 
