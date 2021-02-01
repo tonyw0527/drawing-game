@@ -19,7 +19,7 @@ const en_pack = {
 
 const ko_pack = {
     //Home
-    HOME_TITLE_H1: 'Drawing Game',
+    HOME_TITLE_H1: 'GRINDA',
     HOME_TITLE_H2: '환영합니다!',
     HOME_NICKNAME_INFO: '닉네임과 초대코드를 입력하세요',
 
