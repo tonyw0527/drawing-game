@@ -1,10 +1,11 @@
 // get method
 export default (req, res) => {
   const { invicode } = req.cookies;
-
-  if(invicode === process.env.INVITATION_CODE || process.env.ADMIN_SECRET){
+  const flag = invicode === process.env.INVITATION_CODE || invicode === process.env.ADMIN_SECRET;
+  console.log(flag);
+  if(flag){
     res.status(200).json({success: true});
   } else {
-    res.statsus(400).json({success: false});
+    res.status(400).json({success: false});
   };
 }
