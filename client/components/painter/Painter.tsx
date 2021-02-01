@@ -38,6 +38,7 @@ const ToolBoxInput = styled.input`
   margin-right: 5px;
   border: 1px solid black;
   padding: 3px;
+  font-size: 1rem;
 
   &: disabled {
     display: none;
@@ -89,14 +90,9 @@ const PalletOpenBtn = styled(ToolBoxBtn)`
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 20px;
 
-  border: 1px solid black;
-  border-radius: 50%;
-
   font-size: 0.7rem;
-
   color: transparent;
   background-color: transparent;
   background-image: url("./icons/palette_icon.svg");
@@ -152,15 +148,21 @@ const SendAnsBox = styled.div`
   display: flex;
 `;
 
-const SendAnsBoxBtn = styled(ToolBoxBtn)`
-  border: 1px solid black;
-  border-radius: 50%;
+const RandomAnsBtn = styled(ToolBoxBtn)`
   padding: 3px;
   width: 25px;
   height: 25px;
   font-size: 0.5rem;
   margin-right: 0;
   margin-left: 0;
+  background-image: url("./icons/random.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+
+  &: active {
+    transform: rotate(2turn);
+  }
 `;
 
 const NonHostBox = styled.div``;
@@ -172,6 +174,10 @@ const BookingBtn = styled.button`
   border: 0;
   border-bottom: 1px solid black;
   font-size: 0.8rem;
+
+  &: disabled {
+    display: none;
+  }
 `;
 
 const { PAINTER_BOOKING_BUTTON, ANS_INPUT_PLACEHOLDER } = ko_pack;
@@ -716,15 +722,15 @@ const Painter = () => {
               socketRef.current.emit("send answer", answerFromHost);
             }}
           />
-          <SendAnsBoxBtn
+          <RandomAnsBtn
             disabled={!IsMyTurn}
             type="button"
             onClick={() => {
               socketRef.current.emit("random ans");
             }}
           >
-            ?
-          </SendAnsBoxBtn>
+            random
+          </RandomAnsBtn>
         </SendAnsBox>
 
         <NonHostBox>
