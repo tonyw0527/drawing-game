@@ -14,9 +14,6 @@ const Container = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
-  background-color: black;
-  color: white;
 `;
 
 const TitleBox = styled.div`
@@ -24,14 +21,11 @@ const TitleBox = styled.div`
   margin-bottom: 10px;
 `;
 
-const TitleH1 = styled.h1`
-  text-align: center;
-`;
 const TitleStrong = styled.strong`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 `;
 const TitleSpan = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 `;
 
 const GalleryListBox = styled.span`
@@ -42,42 +36,52 @@ const GalleryListBox = styled.span`
 `;
 
 const CanvasBox = styled.div`
-  margin: 8px;
+  margin: 0.5rem;
   text-align: center;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.25); ;
+`;
+const Canvas = styled.canvas`
+  border-radius: 1rem;
 `;
 const CanvasDesc = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
 `;
 const DescH3 = styled.h3`
-  margin-right: 10px;
-  font-size: 1.5rem;
-  transform: translateY(20%);
+  margin-top: 0.45rem;
+  margin-right: 0.7px;
+  font-size: 1.1rem;
 `;
+
 const DescBtn = styled.button`
+  display: flex;
+  flex-direction: column;
   width: 40px;
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  transform: translateY(10%);
 
   &:disabled {
     display: none;
   }
 `;
 const DescIcon = styled.i`
+  width: 100%;
+  height: 40%;
+  margin-bottom: 0.2rem;
   color: transparent;
   background-image: url("./icons/likes_icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 `;
-const DescStrong = styled.strong`
-  transform: translateY(25%);
-  font-size: 1.3rem;
+const DescSpan = styled.span`
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
 `;
 const DeleteBtn = styled(DescBtn)`
   border: none;
@@ -96,10 +100,6 @@ const LoadingBox = styled.div`
   height: 100vh;
 `;
 
-const Canvas = styled.canvas`
-  border: 1px solid black;
-`;
-
 const { GALLERY_TITLE_INFO, GALLERY_LOADING_INFO } = ko_pack;
 
 const Gallery = (props) => {
@@ -115,11 +115,6 @@ const Gallery = (props) => {
   const socketRef = useRef<any>();
 
   useEffect(() => {
-    if (!isAuth) {
-      router.push("/");
-    } else {
-    }
-
     const socket =
       process.env.NEXT_PUBLIC_NODE_ENV === "production"
         ? io("/")
@@ -193,8 +188,8 @@ const Gallery = (props) => {
               }}
             >
               <DescIcon className="likes-btn-icon">likes</DescIcon>
+              <DescSpan>{item.likes.length}</DescSpan>
             </DescBtn>
-            <DescStrong>{item.likes.length}</DescStrong>
           </CanvasDesc>
           <DeleteBtn
             className="delete-btn"
@@ -224,10 +219,13 @@ const Gallery = (props) => {
     return list;
   };
 
+  if (!isAuth) {
+    router.push("/");
+  }
+
   return (
     <Container>
       <TitleBox>
-        <TitleH1>Gallery</TitleH1>
         <TitleSpan>
           <TitleStrong>{nickName}</TitleStrong> {GALLERY_TITLE_INFO}
         </TitleSpan>
