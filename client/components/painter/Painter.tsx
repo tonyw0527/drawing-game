@@ -54,6 +54,10 @@ const ToolBoxBtn = styled.button`
   background-color: transparent;
   transition: transform 0.3s;
 
+  &: hover {
+    cursor: pointer;
+  }
+
   &: disabled {
     display: none;
   }
@@ -98,7 +102,6 @@ const PalletOpenBtn = styled(ToolBoxBtn)`
   background-image: url("./icons/palette_icon.svg");
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
 `;
 
 const PalletWrapper = styled.div`
@@ -130,7 +133,6 @@ const ArrowBtn = styled(ToolBoxBtn)`
   background-position: center;
   background-size: contain;
   color: transparent;
-  cursor: pointer;
 `;
 
 const A = styled.a`
