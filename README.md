@@ -5,6 +5,16 @@
 - 채팅 기능을 이용하여 terminal을 이용하듯이 관리자 기능을 지원합니다. ex) 강퇴 명령어 'sudo kick [유저네임]'
 - 다크모드를 지원합니다.
 
+## Tech Stack
+
+- Typescript
+- Next.js
+- Mobx
+- Styled-components
+- Express.js
+- Socket.io
+- Mongoose
+
 ## 게임 진행
 
 ### 출제 예약
@@ -26,16 +36,6 @@
 - 제한 시간이 끝나거나 전원 빙고된 경우 현재 출제자는 일반 유저 모드로, 다음 예약자가 출제자 모드로 변경되며 준비 시간(10초)가 주어집니다.
 - 위와 같은 방법으로 진행 됩니다.
 - 출제자가 없는 경우 마지막 출제자가 계속해서 출제자 모드를 유지하며 자유 출제 할 수 있습니다.
-
-## Tech Stack
-
-- Typescript
-- Next.js
-- Mobx
-- Styled-components
-- Express.js
-- Socket.io
-- Mongoose
 
 ## Pages
 
