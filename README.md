@@ -105,6 +105,10 @@ location ~* \.io {
 ```sh
 cd client
 vim .env.local
+#INVITATION_CODE=
+#ADMIN_SECRET=
+#NEXT_PUBLIC_NODE_ENV=
+
 yarn install
 yarn build
 pm2 start yarn --name next.js -- start
@@ -115,6 +119,12 @@ pm2 start yarn --name next.js -- start
 ```sh
 cd server
 vim .env
+#PORT=
+#INVITATION_CODE=
+#MONGO_SECRET=
+#ADMIN_SECRET=
+#ADMIN_LIMIT_TIME=
+
 yarn install
 yarn build
 cd dist

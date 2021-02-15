@@ -34,7 +34,7 @@ const adminName = "admin";
 const adminSecret = process.env.ADMIN_SECRET;
 const adminLimitTime = process.env.ADMIN_LIMIT_TIME;
 let isAdminLogined = false;
-let invitation_code = "love";
+let invitation_code = process.env.INVITAION_CODE;
 
 // game state
 const gameManager = new GameManager(io);
