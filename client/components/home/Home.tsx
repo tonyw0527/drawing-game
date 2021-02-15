@@ -4,14 +4,15 @@ import { ko_pack } from "../../utils/localization/lang_packs";
 import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
 import Popup from "../basics/Popup";
+import Link from "next/link";
+import Copyright from "../basics/Copyright";
 import styled from "styled-components";
 
 const { HOME_TITLE_H1, HOME_TITLE_H2, HOME_NICKNAME_INFO } = ko_pack;
 
 const Container = styled.div`
-  flex: 1 0 auto;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -108,7 +109,31 @@ const Button = styled.button`
 `;
 const StateBox = styled.div`
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   margin-top: 5rem;
+  padding: 0 4rem;
+`;
+
+const A = styled.a`
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  text-align: center;
+
+  &: hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+  }
+`;
+
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 0rem;
 `;
 
 const Home = observer(() => {
@@ -161,6 +186,14 @@ const Home = observer(() => {
             {"님 "}
             {"환영합니다 :D"}
           </Span>
+
+          <Link href="/painter">
+            <A>게임 참가하기</A>
+          </Link>
+
+          <Link href="/gallery">
+            <A>갤러리 구경하기</A>
+          </Link>
         </StateBox>
         <Form
           ref={formRef}
@@ -208,6 +241,9 @@ const Home = observer(() => {
           </Button>
         </Form>
       </Wrapper>
+      <Footer>
+        <Copyright />
+      </Footer>
     </Container>
   );
 });

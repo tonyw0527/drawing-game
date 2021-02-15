@@ -1,41 +1,26 @@
+import { useEffect } from "react";
 import styled from "styled-components";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import DarkModeToggleButton from "./DarkModeToggleButton";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: start;
-  padding: 0.5rem 1.1rem 0.8rem;
-  width: 100%;
-`;
-
-const A = styled.a`
-  margin-right: 1rem;
-  font-size: 1.3rem;
-  margin-top: 0.3rem;
-
-  &: hover {
-    cursor: pointer;
-  }
-`;
+const Container = styled.div``;
 
 type HeaderProps = {
   onToggleTheme: () => void;
 };
 
-const Header = ({ onToggleTheme }: HeaderProps) => (
-  <Container>
-    <DarkModeToggleButton onToggleTheme={onToggleTheme} />
-    <Link href="/">
-      <A>Home</A>
-    </Link>
-    <Link href="/painter">
-      <A>Game</A>
-    </Link>
-    <Link href="/gallery">
-      <A>Gallery</A>
-    </Link>
-  </Container>
-);
+const Header = ({ onToggleTheme }: HeaderProps) => {
+  const router = useRouter();
+
+  if (router.pathname !== "/") {
+    return <div></div>;
+  }
+
+  return (
+    <Container>
+      <DarkModeToggleButton onToggleTheme={onToggleTheme} />
+    </Container>
+  );
+};
 
 export default Header;

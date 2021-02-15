@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import Chat from "../chat/Chat";
 import { useStore } from "../../stores/StoreProvider";
+import Chat from "../chat/Chat";
+import Copyright from "../basics/Copyright";
 import { WHITE_PNG, WorkMemory, canvasImgSetting } from "../../utils/utils";
 import { ko_pack } from "../../utils/localization/lang_packs";
 import io from "socket.io-client";
@@ -14,7 +15,12 @@ const Container = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
+`;
+
+const H1 = styled.h1`
+  margin: 0.5rem;
+  font-size: 1.5rem;
 `;
 
 const DrawingBox = styled.div`
@@ -523,6 +529,7 @@ const Painter = () => {
 
   return (
     <Container>
+      <H1>Game Room</H1>
       <DrawingBox>
         <canvas ref={myCanvasRef} id="myCanvas" width="350" height="350">
           Error
@@ -760,6 +767,7 @@ const Painter = () => {
         </NonHostBox>
       </ToolBox>
       <Chat MyName={MyName} />
+      <Copyright />
     </Container>
   );
 };

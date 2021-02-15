@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useStore } from "../../stores/StoreProvider";
 import { ko_pack } from "../../utils/localization/lang_packs";
 import io from "socket.io-client";
+import Copyright from "../basics/Copyright";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -231,6 +232,7 @@ const Gallery = (props) => {
         </TitleSpan>
       </TitleBox>
       <GalleryListBox>{renderDrawings()}</GalleryListBox>
+      <Copyright />
     </Container>
   );
 };

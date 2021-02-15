@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
   position: absolute;
   top: 0;
-  right: 1.1rem;
-  padding-top: 0.4rem;
+  right: 0.5rem;
+  margin-top: 0.4rem;
 
   &: hover {
     cursor: pointer;
@@ -15,13 +15,12 @@ const Wrapper = styled.div`
   display: flex;
   border-radius: 50px;
   padding: 0.2rem;
-  background-color: ${({ theme }) => theme.color.body};
   transition: background-color 1s;
 `;
 
 const Button = styled.button`
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 20px;
   outline: 0;
