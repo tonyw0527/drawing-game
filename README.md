@@ -127,8 +127,7 @@ vim .env
 
 yarn install
 yarn build
-cd dist
-pm2 start app.js
+pm2 start yarn --name app.js -- start
 ```
 
 - The End
